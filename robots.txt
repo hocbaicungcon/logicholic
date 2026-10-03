@@ -1,0 +1,17 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Search crawlers for AI-assisted discovery; training crawlers remain unspecified.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Host & Sitemap
+Host: https://logicholic.com
+Sitemap: https://logicholic.com/sitemap.xml

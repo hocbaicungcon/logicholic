@@ -1,0 +1,144 @@
+<!doctype html><html lang="vi"><head><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VGZMBQWVRM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VGZMBQWVRM');
+</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cách giải Sudoku bằng suy luận từng bước | Logicholic</title><meta name="description" content="Các kỹ thuật cơ bản giúp giải Sudoku có hệ thống: quét hàng, cột, vùng và ghi chú ứng viên."><meta name="robots" content="index,follow"><link rel="canonical" href="https://logicholic.com/bai-viet/cach-giai-sudoku-bang-suy-luan/"><meta property="og:type" content="website"><meta property="og:site_name" content="Logicholic"><meta property="og:title" content="Cách giải Sudoku bằng suy luận từng bước | Logicholic"><meta property="og:description" content="Các kỹ thuật cơ bản giúp giải Sudoku có hệ thống: quét hàng, cột, vùng và ghi chú ứng viên."><meta property="og:url" content="https://logicholic.com/bai-viet/cach-giai-sudoku-bang-suy-luan/"><link rel="stylesheet" href="../../css/style.min.css"><link rel="stylesheet" href="../../css/articles.css"><link rel="icon" href="../../assets/logo.svg" type="image/svg+xml"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://logicholic.com/bai-viet/cach-giai-sudoku-bang-suy-luan/#article","headline":"Cách giải Sudoku bằng suy luận từng bước","description":"Các kỹ thuật cơ bản giúp giải Sudoku có hệ thống: quét hàng, cột, vùng và ghi chú ứng viên.","datePublished":"2026-10-03","dateModified":"2026-10-03","inLanguage":"vi","mainEntityOfPage":"https://logicholic.com/bai-viet/cach-giai-sudoku-bang-suy-luan/","articleSection":"Sudoku","author":{"@type":"Organization","name":"Logicholic","url":"https://logicholic.com/"},"publisher":{"@type":"Organization","name":"Logicholic","url":"https://logicholic.com/"}}</script><script>try{const theme=localStorage.getItem('sudoku-coach-theme');document.documentElement.dataset.theme=['dark','light','sepia','eink'].includes(theme)?theme:'dark'}catch(e){}</script><script defer src="../../js/article-header.js"></script></head><body class="article-page"><header class="app-header article-app-header">
+<div class="logo-area"><a href="../../index.html" id="header-brand-logo" class="logo-brand-link" style="display:flex;align-items:center;gap:8px;text-decoration:none" aria-label="Về trang chủ Logicholic"><img src="../../assets/logo.svg" alt="Logicholic" class="logo-icon-svg" width="34" height="34"> </a><button type="button" id="header-brand-name" class="logo-title" aria-label="Mở menu trò chơi"><span class="brand-site-name">Logicholic</span> <svg class="brand-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35 10.55 20.03C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3c1.74 0 3.41.81 4.5 2.09A5.98 5.98 0 0 1 16.5 3 5.5 5.5 0 0 1 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35Z"/></svg> <span id="header-current-game-name" class="brand-game-name">Bài viết</span></button>
+<div class="game-menu-container" id="game-menu-container"><button id="btn-game-menu" class="btn-game-menu" aria-controls="game-menu-dropdown" aria-expanded="false" aria-haspopup="dialog" title="Chọn trò chơi logic" aria-label="Chọn trò chơi logic"><span class="game-icon-mini">🎮</span> <span id="active-game-label">Trò chơi</span> <svg class="menu-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<div class="game-menu-dropdown" id="game-menu-dropdown" role="dialog" aria-label="Chọn trò chơi">
+<div class="dropdown-header-bar"><span class="dropdown-header-title">Kho Trò Chơi Trí Tuệ</span> <span class="dropdown-game-count-badge" id="dropdown-game-count-badge">20 trò chơi</span>
+</div>
+<div class="dropdown-search-bar"><svg class="dropdown-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> <input id="game-search-input" class="game-search-input" placeholder="Tìm kiếm trò chơi..." autocomplete="off" spellcheck="false" aria-label="Tìm kiếm trò chơi"> <button type="button" id="btn-clear-game-search" class="btn-clear-search" style="display:none" title="Xoá tìm kiếm" aria-label="Xoá tìm kiếm">&times;</button>
+</div>
+<div class="game-menu-grid" id="game-menu-grid">
+<a class="game-nav-item" data-game="sudoku" href="../../sudoku/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Sudoku</span> <span class="game-nav-desc">Giải đố 9x9 với 11 cấp độ</span>
+</div><span class="game-nav-badge" data-badge="sudoku">21.750+ đề</span>
+</a>
+<a class="game-nav-item" data-game="game2048" href="../../game2048/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h4v4H8z"/><path d="M12 12h4v4h-4z"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">2048</span> <span class="game-nav-desc">Ghép số lũy thừa 2048</span>
+</div><span class="game-nav-badge" data-badge="game2048">5 chế độ</span>
+</a>
+<a class="game-nav-item" data-game="nim" href="../../nim/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="18" r="3"/><circle cx="12" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="9" cy="11" r="3"/><circle cx="15" cy="11" r="3"/><circle cx="12" cy="4" r="3"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Bốc Sỏi Nim</span> <span class="game-nav-desc">Nim-sum Bouton & Đấu AI</span>
+</div><span class="game-nav-badge" data-badge="nim">8 thế cờ</span>
+</a>
+<a class="game-nav-item" data-game="caro" href="../../caro/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Cờ Caro</span> <span class="game-nav-desc">Gomoku 5 quân & Đấu AI</span>
+</div><span class="game-nav-badge" data-badge="caro">4 chế độ</span>
+</a>
+<a class="game-nav-item" data-game="minesweeper" href="../../minesweeper/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Dò Mìn</span> <span class="game-nav-desc">Trí tuệ gỡ bom kinh điển</span>
+</div><span class="game-nav-badge" data-badge="minesweeper">3 cấp độ</span>
+</a>
+<a class="game-nav-item" data-game="einstein" href="../../einstein/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Einstein Riddle</span> <span class="game-nav-desc">Câu đố logic kinh điển</span>
+</div><span class="game-nav-badge" data-badge="einstein">1.101 câu đố</span>
+</a>
+<a class="game-nav-item" data-game="futoshiki" href="../../futoshiki/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m9 9 3 3-3 3M15 9l-3 3 3 3"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Futoshiki</span> <span class="game-nav-desc">Bất đẳng thức số học</span>
+</div><span class="game-nav-badge" data-badge="futoshiki">50 màn chơi</span>
+</a>
+<a class="game-nav-item" data-game="kakuro" href="../../kakuro/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="3" x2="21" y2="21"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Kakuro</span> <span class="game-nav-desc">Dãy tổng số học logic</span>
+</div><span class="game-nav-badge" data-badge="kakuro">4 mức độ</span>
+</a>
+<a class="game-nav-item" data-game="mastermind" href="../../mastermind/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Mastermind</span> <span class="game-nav-desc">Giải mã màu sắc logic</span>
+</div><span class="game-nav-badge" data-badge="mastermind">5 cấp độ</span>
+</a>
+<a class="game-nav-item" data-game="maze" href="../../maze/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h7v6H4"/><path d="M15 4v6h5"/><path d="M15 15h5v5"/><path d="M9 15v5"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Mê Cung</span> <span class="game-nav-desc">Tìm đường thoát hiểm bí ẩn</span>
+</div><span class="game-nav-badge" data-badge="maze">50 màn chơi</span>
+</a>
+<a class="game-nav-item" data-game="nonogram" href="../../nonogram/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="4" height="4" fill="currentColor"/><rect x="13" y="13" width="4" height="4" fill="currentColor"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Nonogram</span> <span class="game-nav-desc">Tranh số logic Picross</span>
+</div><span class="game-nav-badge" data-badge="nonogram">1.001 màn chơi</span>
+</a>
+<a class="game-nav-item" data-game="pipes" href="../../pipes/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Nối Ống Nước</span> <span class="game-nav-desc">Xoay ống thông dòng nước</span>
+</div><span class="game-nav-badge" data-badge="pipes">24 màn chơi</span>
+</a>
+<a class="game-nav-item" data-game="pentomino" href="../../pentomino/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Pentomino</span> <span class="game-nav-desc">Ghép 12 khối hình học</span>
+</div><span class="game-nav-badge" data-badge="pentomino">7 thử thách</span>
+</a>
+<a class="game-nav-item" data-game="river" href="../../river/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20a2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1M4 17h16L18 9H6z"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Qua Sông</span> <span class="game-nav-desc">Giải đố qua sông an toàn</span>
+</div><span class="game-nav-badge" data-badge="river">6 kịch bản</span>
+</a>
+<a class="game-nav-item" data-game="matchsticks" href="../../matchsticks/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="4"/><circle cx="19" cy="5" r="2"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Que Diêm</span> <span class="game-nav-desc">Di chuyển que tính số học</span>
+</div><span class="game-nav-badge" data-badge="matchsticks">300 câu đố</span>
+</a>
+<a class="game-nav-item" data-game="sokoban" href="../../sokoban/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m3 9 9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Sokoban</span> <span class="game-nav-desc">Đẩy thùng logic không gian</span>
+</div><span class="game-nav-badge" data-badge="sokoban">120 màn chơi</span>
+</a>
+<a class="game-nav-item" data-game="tangram" href="../../tangram/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 22 22 22"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="22" x2="17" y2="12"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Tangram</span> <span class="game-nav-desc">Nghệ thuật 7 mảnh trí uẩn</span>
+</div><span class="game-nav-badge" data-badge="tangram">1.001 mẫu hình</span>
+</a>
+<a class="game-nav-item" data-game="pathfinding" href="../../pathfinding/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a4.5 4.5 0 0 0 0-9H10a3 3 0 0 1 0-6h9"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Tìm Đường</span> <span class="game-nav-desc">Điều hướng logic vượt chướng ngại</span>
+</div><span class="game-nav-badge" data-badge="pathfinding">10 màn chơi</span>
+</a>
+<a class="game-nav-item" data-game="shortest" href="../../shortest/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="m7 6 10 0M6.5 8l4 8m7-8-4 8"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Đồ thị tối ưu</span><span class="game-nav-desc">Tìm tuyến đường tối ưu trên đồ thị</span>
+</div><span class="game-nav-badge" data-badge="shortest">4 kiểu thử thách</span>
+</a>
+<a class="game-nav-item" data-game="waterjug" href="../../waterjug/">
+<div class="game-nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+</div>
+<div class="game-nav-info"><span class="game-nav-title">Đong Nước</span> <span class="game-nav-desc">Đong đo dung tích can</span>
+</div><span class="game-nav-badge" data-badge="waterjug">12 bài toán</span>
+</a>
+<div id="game-search-empty" class="game-search-empty" style="display:none"><span>🔍 Không tìm thấy trò chơi phù hợp</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="header-right-group" aria-label="Điều hướng bài viết"><a class="article-header-link" href="../index.html">Bài viết</a><button id="btn-theme-cycle" class="btn btn-icon" title="Đổi giao diện: Tối → Sáng dịu → Giấy ấm → E-Ink Kindle (Phím T)" aria-label="Đổi giao diện"><svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></nav></header><main class="article-main"><a class="article-back" href="../index.html">← Tất cả bài viết</a><article><header><p class="article-eyebrow">Sudoku</p><h1 class="article-title">Cách giải Sudoku bằng suy luận từng bước</h1><p class="article-description">Các kỹ thuật cơ bản giúp giải Sudoku có hệ thống: quét hàng, cột, vùng và ghi chú ứng viên.</p><div class="article-meta"><time datetime="2026-10-03">2026-10-03</time><span>Đọc trong 5 phút</span></div></header><div class="article-prose"><section><h2>Bắt đầu bằng những ô dễ xác định</h2><p>Quan sát lần lượt từng hàng, cột và vùng 3×3. Nếu một ô chỉ còn một chữ số hợp lệ, đó là nước đi chắc chắn và nên được điền trước.</p><p>Tiếp theo, tìm chữ số chỉ có thể nằm ở một vị trí trong một hàng, cột hoặc vùng. Cách nhìn này thường giúp mở ra thêm nhiều ô đơn.</p></section><section><h2>Dùng ghi chú ứng viên có mục đích</h2><p>Ở những ô chưa thể chốt, ghi các chữ số vẫn còn hợp lệ sau khi loại các số đã có trong cùng hàng, cột và vùng. Khi một ứng viên bị loại ở nơi khác, cập nhật lại ghi chú liên quan.</p><p>Tránh đoán quá sớm. Mỗi lần điền nên dựa trên quy tắc Sudoku hoặc một chuỗi suy luận có thể kiểm tra lại.</p></section><section><h2>Một quy trình giải dễ theo dõi</h2><p>Quét các ô đơn, cập nhật ứng viên, rồi tìm cặp ứng viên giống nhau trong cùng một nhóm. Hai ô cùng chứa đúng hai ứng viên sẽ dành hai số đó cho nhau, giúp loại chúng khỏi các ô còn lại trong nhóm.</p><p>Lặp lại các bước này sau mỗi lần điền số. Khi không còn tiến triển, chuyển sang kỹ thuật nâng cao thay vì điền thử ngẫu nhiên.</p></section></div></article></main><footer class="article-footer"><a href="../../index.html">Logicholic</a> · <a href="../index.html">Tất cả bài viết</a> · Trò chơi trí tuệ và tư duy logic</footer></body></html>

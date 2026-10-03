@@ -1,0 +1,52 @@
+<!-- credit: giasu.ai.vn -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="128 0 64 64" width="64" height="64"><defs>
+    
+    <pattern id="brick" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#547a78" />
+      <path d="M 0,4 L 16,4 M 0,8 L 16,8 M 0,12 L 16,12 M 8,0 L 8,4 M 0,4 L 0,8 M 12,4 L 12,8 M 4,8 L 4,12 M 16,8 L 16,12 M 8,12 L 8,16" stroke="#668d89" stroke-width="1" />
+      <path d="M 0,0 L 16,0 M 0,4 L 8,4 M 0,8 L 4,8 M 12,8 L 16,8 M 0,12 L 8,12" stroke="#355f60" stroke-width="1" />
+    </pattern>
+
+    
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6ae75" />
+      <stop offset="50%" stop-color="#cc8e5e" />
+      <stop offset="100%" stop-color="#a76e49" />
+    </linearGradient>
+
+    <linearGradient id="woodGradStored" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a2cba9" />
+      <stop offset="50%" stop-color="#72aa8e" />
+      <stop offset="100%" stop-color="#497d68" />
+    </linearGradient>
+
+    
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e58677" />
+      <stop offset="100%" stop-color="#c66d65" />
+    </linearGradient>
+
+    
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5aa9b4" />
+      <stop offset="100%" stop-color="#347c8e" />
+    </linearGradient>
+  </defs>
+
+  
+  
+  
+  <g id="tile-target" transform="translate(128, 0)">
+    
+    <rect width="64" height="64" fill="#e5f0ec" />
+    <rect x="2" y="2" width="60" height="60" fill="#f5faf7" />
+    <path d="M 2,62 L 62,62 L 62,2" fill="none" stroke="#c7dcd6" stroke-width="2" />
+    <path d="M 2,62 L 2,2 L 62,2" fill="none" stroke="#ffffff" stroke-width="2" />
+    
+    <circle cx="32" cy="32" r="20" fill="#e58677" opacity="0.2" />
+    <circle cx="32" cy="32" r="14" fill="none" stroke="#c66d65" stroke-width="4" />
+    <circle cx="32" cy="32" r="6" fill="#c66d65" />
+  </g>
+
+  
+  </svg>

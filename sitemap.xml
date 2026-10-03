@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://logicholic.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://logicholic.com/sudoku/</loc><priority>0.95</priority></url>
+  <url><loc>https://logicholic.com/game2048/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/nim/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/caro/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/minesweeper/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/einstein/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/futoshiki/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/kakuro/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/mastermind/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/maze/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/nonogram/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/pipes/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/pentomino/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/river/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/matchsticks/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/sokoban/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/tangram/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/pathfinding/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/shortest/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/waterjug/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/bai-viet/</loc><priority>0.8</priority></url>
+  <url><loc>https://logicholic.com/bai-viet/cach-giai-sudoku-bang-suy-luan/</loc><priority>0.7</priority></url>
+  <url><loc>https://logicholic.com/bai-viet/chien-luoc-choi-2048/</loc><priority>0.7</priority></url>
+  <url><loc>https://logicholic.com/bai-viet/meo-suy-luan-do-min/</loc><priority>0.7</priority></url>
+</urlset>
