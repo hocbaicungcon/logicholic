@@ -1,0 +1,189 @@
+<!-- credit: giasu.ai.vn -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" width="512" height="256">
+  <style>
+    .grid-line { stroke: rgba(255, 255, 255, 0.15); stroke-width: 1; stroke-dasharray: 4 4; }
+    .label { font-family: monospace; font-size: 10px; fill: #D6B989; font-weight: bold; }
+  </style>
+
+  <defs>
+    <!-- Wall Pattern -->
+    <pattern id="brick" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#8C4025"/>
+      <path d="M 0,4 L 16,4 M 0,8 L 16,8 M 0,12 L 16,12 M 8,0 L 8,4 M 0,4 L 0,8 M 12,4 L 12,8 M 4,8 L 4,12 M 16,8 L 16,12 M 8,12 L 8,16" stroke="#A65A37" stroke-width="1"/>
+      <path d="M 0,0 L 16,0 M 0,4 L 8,4 M 0,8 L 4,8 M 12,8 L 16,8 M 0,12 L 8,12" stroke="#672F20" stroke-width="1"/>
+    </pattern>
+
+    <!-- Wood Texture Gradient for Box -->
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6ae75"/>
+      <stop offset="50%" stop-color="#cc8e5e"/>
+      <stop offset="100%" stop-color="#a76e49"/>
+    </linearGradient>
+
+    <linearGradient id="woodGradStored" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="50%" stop-color="#D99117"/>
+      <stop offset="100%" stop-color="#8C4025"/>
+    </linearGradient>
+
+    <!-- Player Cap Gradient -->
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D99117"/>
+    </linearGradient>
+
+    <!-- Player Shirt Gradient -->
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#C77C13"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ================= GRID HELPER (64x64 tiles) ================= -->
+  <!-- Row 1: Environment & Objects -->
+  <!-- Tile 1: Wall (0,0) -->
+  <g id="tile-wall" transform="translate(0, 0)">
+    <rect width="64" height="64" fill="url(#brick)"/>
+  </g>
+
+  <!-- Tile 2: Floor (64,0) -->
+  <g id="tile-floor" transform="translate(64, 0)">
+    <rect width="64" height="64" fill="#EFE2CA"/>
+    <!-- Grid tile texture -->
+    <rect x="2" y="2" width="60" height="60" fill="#FFF9ED"/>
+    <path d="M 2,62 L 62,62 L 62,2" fill="none" stroke="#D8C7AA" stroke-width="2"/>
+    <path d="M 2,62 L 2,2 L 62,2" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <!-- Subtle floor dots -->
+    <circle cx="16" cy="16" r="1.5" fill="#D6B989"/>
+    <circle cx="48" cy="48" r="1.5" fill="#D6B989"/>
+  </g>
+
+  <!-- Tile 3: Target / Goal (128,0) -->
+  <g id="tile-target" transform="translate(128, 0)">
+    <!-- Base Floor -->
+    <rect width="64" height="64" fill="#EFE2CA"/>
+    <rect x="2" y="2" width="60" height="60" fill="#FFF9ED"/>
+    <path d="M 2,62 L 62,62 L 62,2" fill="none" stroke="#D8C7AA" stroke-width="2"/>
+    <path d="M 2,62 L 2,2 L 62,2" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <!-- Target Marker Spot -->
+    <circle cx="32" cy="32" r="20" fill="#FBBF24" opacity="0.2"/>
+    <circle cx="32" cy="32" r="14" fill="none" stroke="#D99117" stroke-width="4"/>
+    <circle cx="32" cy="32" r="6" fill="#D99117"/>
+  </g>
+
+  <!-- Tile 4: Box / Crate (192,0) -->
+  <g id="tile-box" transform="translate(192, 0)">
+    <!-- Base Floor below shadow -->
+    <rect width="64" height="64" fill="#EFE2CA"/>
+    <!-- Box Body -->
+    <rect x="4" y="4" width="56" height="56" rx="4" fill="url(#woodGrad)" stroke="#7A4427" stroke-width="3"/>
+    <!-- Inner Frame -->
+    <rect x="10" y="10" width="44" height="44" fill="none" stroke="#7A4427" stroke-width="2" opacity="0.5"/>
+    <!-- X-Brace Plank -->
+    <line x1="10" y1="10" x2="54" y2="54" stroke="#7A4427" stroke-width="4"/>
+    <line x1="54" y1="10" x2="10" y2="54" stroke="#7A4427" stroke-width="4"/>
+    <!-- Corner Metal Reinforcements -->
+    <path d="M 4,16 L 16,4 M 48,4 L 60,16 M 60,48 L 48,60 M 16,60 L 4,48" stroke="#542F1D" stroke-width="3"/>
+    <!-- Highlights -->
+    <path d="M 6,58 L 6,6 L 58,6" fill="none" stroke="#FFF0C2" stroke-width="2" opacity="0.6"/>
+    <path d="M 6,58 L 58,58 L 58,6" fill="none" stroke="#542F1D" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Tile 5: Box On Target / Stored (256,0) -->
+  <g id="tile-box-stored" transform="translate(256, 0)">
+    <rect width="64" height="64" fill="#EFE2CA"/>
+    <!-- Box Body Green (Success) -->
+    <rect x="4" y="4" width="56" height="56" rx="4" fill="url(#woodGradStored)" stroke="#672F20" stroke-width="3"/>
+    <!-- Inner Frame -->
+    <rect x="10" y="10" width="44" height="44" fill="none" stroke="#672F20" stroke-width="2" opacity="0.5"/>
+    <!-- X-Brace Plank -->
+    <line x1="10" y1="10" x2="54" y2="54" stroke="#672F20" stroke-width="4"/>
+    <line x1="54" y1="10" x2="10" y2="54" stroke="#672F20" stroke-width="4"/>
+    <!-- Glowing OK Checkmark / Diamond in center -->
+    <circle cx="32" cy="32" r="12" fill="#8C4025" stroke="#FFF4D6" stroke-width="2"/>
+    <path d="M 26,32 L 30,36 L 38,26" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Highlights -->
+    <path d="M 6,58 L 6,6 L 58,6" fill="none" stroke="#FFF4D6" stroke-width="2" opacity="0.7"/>
+    <path d="M 6,58 L 58,58 L 58,6" fill="none" stroke="#4A281A" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- ================= Row 2: Player Character Directions ================= -->
+
+  <!-- Tile 6: Player Down (0,64) -->
+  <g id="player-down" transform="translate(0, 64)">
+    <!-- Shadow -->
+    <ellipse cx="32" cy="54" rx="18" ry="6" fill="#493629" opacity="0.3"/>
+    <!-- Feet -->
+    <ellipse cx="22" cy="50" rx="6" ry="4" fill="#76563D"/>
+    <ellipse cx="42" cy="50" rx="6" ry="4" fill="#76563D"/>
+    <!-- Body / Shirt -->
+    <path d="M 18,32 C 18,24 46,24 46,32 L 44,48 L 20,48 Z" fill="url(#shirtGrad)"/>
+    <!-- Hands -->
+    <circle cx="16" cy="38" r="4" fill="#f4ceb7"/>
+    <circle cx="48" cy="38" r="4" fill="#f4ceb7"/>
+    <!-- Head -->
+    <circle cx="32" cy="24" r="14" fill="#dfb676"/> <!-- Hair/Base -->
+    <circle cx="32" cy="25" r="12" fill="#f4ceb7"/> <!-- Skin -->
+    <!-- Eyes -->
+    <circle cx="27" cy="25" r="2" fill="#493629"/>
+    <circle cx="37" cy="25" r="2" fill="#493629"/>
+    <!-- Cap / Hat (Facing Down) -->
+    <path d="M 16,22 C 16,10 48,10 48,22 Z" fill="url(#capGrad)"/>
+    <path d="M 14,22 C 24,24 40,24 50,22 L 48,25 C 38,28 26,28 16,25 Z" fill="#8C4025"/> <!-- Visor -->
+  </g>
+
+  <!-- Tile 7: Player Up (64,64) -->
+  <g id="player-up" transform="translate(64, 64)">
+    <!-- Shadow -->
+    <ellipse cx="32" cy="54" rx="18" ry="6" fill="#493629" opacity="0.3"/>
+    <!-- Feet -->
+    <ellipse cx="22" cy="50" rx="6" ry="4" fill="#76563D"/>
+    <ellipse cx="42" cy="50" rx="6" ry="4" fill="#76563D"/>
+    <!-- Body / Shirt -->
+    <path d="M 18,32 C 18,24 46,24 46,32 L 44,48 L 20,48 Z" fill="url(#shirtGrad)"/>
+    <!-- Head Back -->
+    <circle cx="32" cy="24" r="13" fill="#68513e"/> <!-- Dark Hair Back -->
+    <!-- Cap Back -->
+    <path d="M 16,24 C 16,10 48,10 48,24 Z" fill="url(#capGrad)"/>
+    <rect x="26" y="20" width="12" height="6" rx="2" fill="#8C4025"/> <!-- Cap Strap -->
+  </g>
+
+  <!-- Tile 8: Player Left (128,64) -->
+  <g id="player-left" transform="translate(128, 64)">
+    <!-- Shadow -->
+    <ellipse cx="32" cy="54" rx="16" ry="6" fill="#493629" opacity="0.3"/>
+    <!-- Feet -->
+    <ellipse cx="26" cy="50" rx="7" ry="4" fill="#76563D"/>
+    <ellipse cx="38" cy="50" rx="5" ry="4" fill="#76563D"/>
+    <!-- Body / Shirt -->
+    <path d="M 22,32 C 22,24 42,24 42,32 L 40,48 L 24,48 Z" fill="url(#shirtGrad)"/>
+    <!-- Hand Pushing Left -->
+    <circle cx="16" cy="34" r="4" fill="#f4ceb7"/>
+    <!-- Head Profile Left -->
+    <circle cx="32" cy="24" r="12" fill="#f4ceb7"/>
+    <circle cx="26" cy="24" r="2" fill="#493629"/> <!-- Eye -->
+    <!-- Cap Facing Left -->
+    <path d="M 20,22 C 20,10 44,10 44,22 Z" fill="url(#capGrad)"/>
+    <path d="M 22,21 L 10,23 L 12,26 L 24,24 Z" fill="#8C4025"/> <!-- Visor Left -->
+  </g>
+
+  <!-- Tile 9: Player Right (192,64) -->
+  <g id="player-right" transform="translate(192, 64)">
+    <!-- Shadow -->
+    <ellipse cx="32" cy="54" rx="16" ry="6" fill="#493629" opacity="0.3"/>
+    <!-- Feet -->
+    <ellipse cx="26" cy="50" rx="5" ry="4" fill="#76563D"/>
+    <ellipse cx="38" cy="50" rx="7" ry="4" fill="#76563D"/>
+    <!-- Body / Shirt -->
+    <path d="M 22,32 C 22,24 42,24 42,32 L 40,48 L 24,48 Z" fill="url(#shirtGrad)"/>
+    <!-- Hand Pushing Right -->
+    <circle cx="48" cy="34" r="4" fill="#f4ceb7"/>
+    <!-- Head Profile Right -->
+    <circle cx="32" cy="24" r="12" fill="#f4ceb7"/>
+    <circle cx="38" cy="24" r="2" fill="#493629"/> <!-- Eye -->
+    <!-- Cap Facing Right -->
+    <path d="M 20,22 C 20,10 44,10 44,22 Z" fill="url(#capGrad)"/>
+    <path d="M 42,21 L 54,23 L 52,26 L 40,24 Z" fill="#8C4025"/> <!-- Visor Right -->
+  </g>
+
+</svg>

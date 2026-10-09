@@ -1,0 +1,56 @@
+<!-- credit: giasu.ai.vn -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="64 64 64 64" width="64" height="64"><defs>
+
+    <pattern id="brick" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#547a78" />
+      <path d="M 0,4 L 16,4 M 0,8 L 16,8 M 0,12 L 16,12 M 8,0 L 8,4 M 0,4 L 0,8 M 12,4 L 12,8 M 4,8 L 4,12 M 16,8 L 16,12 M 8,12 L 8,16" stroke="#668d89" stroke-width="1" />
+      <path d="M 0,0 L 16,0 M 0,4 L 8,4 M 0,8 L 4,8 M 12,8 L 16,8 M 0,12 L 8,12" stroke="#355f60" stroke-width="1" />
+    </pattern>
+
+
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6ae75" />
+      <stop offset="50%" stop-color="#cc8e5e" />
+      <stop offset="100%" stop-color="#a76e49" />
+    </linearGradient>
+
+    <linearGradient id="woodGradStored" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a2cba9" />
+      <stop offset="50%" stop-color="#72aa8e" />
+      <stop offset="100%" stop-color="#497d68" />
+    </linearGradient>
+
+
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e58677" />
+      <stop offset="100%" stop-color="#c66d65" />
+    </linearGradient>
+
+
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5aa9b4" />
+      <stop offset="100%" stop-color="#347c8e" />
+    </linearGradient>
+  </defs>
+
+  
+  
+  
+  <g id="player-up" transform="translate(64, 64)">
+
+    
+    <ellipse cx="32" cy="54" rx="18" ry="6" fill="#34494a" opacity="0.3" />
+
+    <ellipse cx="22" cy="50" rx="6" ry="4" fill="#465954" />
+    <ellipse cx="42" cy="50" rx="6" ry="4" fill="#465954" />
+
+    <path d="M 18,32 C 18,24 46,24 46,32 L 44,48 L 20,48 Z" fill="url(#shirtGrad)" />
+
+    <circle cx="32" cy="24" r="13" fill="#68513e" /> 
+
+    <path d="M 16,24 C 16,10 48,10 48,24 Z" fill="url(#capGrad)" />
+    <rect x="26" y="20" width="12" height="6" rx="2" fill="#ae5d56" /> 
+  </g>
+
+  
+  </svg>

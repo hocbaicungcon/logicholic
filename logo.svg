@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="logicholic logo">
+  <title>logicholic</title>
+
+  <!-- Nền -->
+  <rect width="512" height="512" rx="112" fill="#8C4025"/>
+
+  <g transform="translate(2,0)">
+    <!-- Mảnh 1 - phần vàng (phía trên khe chéo) -->
+    <path d="M104,64 H216 V254 L104,142 Z" fill="#FBBF24"/>
+
+    <!-- Mảnh 1 - phần kem (phía dưới khe chéo, có mấu tròn lồi xuống) -->
+    <path d="M104,154 L216,266 V316 H180 A26,26 0 1 1 140,316 H104 Z" fill="#FFF8E7"/>
+
+    <!-- Mảnh 2 (kem): nét ngang, ổ đón mấu, cạnh huyền cùng đường với phần kem mảnh 1 -->
+    <path d="M104,340 H126 A34,34 0 0 0 194,340 H290 L398,448 H104 Z" fill="#FFF8E7"/>
+
+    <!-- Tam giác tangram (vàng) -->
+    <polygon points="302,340 404,340 404,442" fill="#FBBF24"/>
+  </g>
+</svg>

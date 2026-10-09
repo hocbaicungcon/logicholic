@@ -1,0 +1,67 @@
+# Logicholic
+
+> Logicholic (https://logicholic.com/) is a free, privacy-first web platform featuring 24 classic logic puzzles and brain games. It runs 100% client-side in the web browser with zero ads, no user tracking, no paywalls, and no account registration required.
+
+Logicholic offers an extensive suite of puzzle types—from Japanese pen-and-paper number crosswords (Sudoku, Kakuro, Futoshiki) and grid loops (Slitherlink, Hashi Bridges, Light Up) to sliding blocks (Klotski, 2048), logic deduction grids (Einstein Riddle, Minesweeper), and algorithmic simulations (Pathfinding, Water Jugs, Nim).
+
+A standout capability of Logicholic is its pedagogical Sudoku deduction engine: an interactive solver that mimics human thought across 43 distinct solving techniques (from Naked Single and Hidden Pairs to Skyscraper, XY-Wing, Swordfish, 3D Medusa, and Forcing Chains). Hints provide human-readable explanations, highlight relevant cells, and draw step-by-step inference arrows directly on the board.
+
+## Core Features & System Attributes
+
+- **100% Free & Ad-Free**: No banner ads, no popups, no video interruptions, no subscriptions.
+- **Privacy & Client-Side Execution**: All puzzles, solvers, and state are computed locally in JavaScript. No personal data or puzzle state is sent to any server.
+- **No Signup Required**: Instant play in any modern browser on desktop, tablet, and mobile.
+- **PWA & Offline Ready**: Service worker caching allows offline gameplay anywhere.
+- **4 Reading Themes**: Dark (OLED-friendly), Light (clean cream), Sepia (vintage scholarly parchment), and E-Ink (high-contrast monochrome for e-readers).
+- **Rich Note & Drawing Tools**: Corner and center pencilmarks, candidate auto-fill, custom cell colors, loop circles, cross-outs, and SVG link arrows.
+- **Accessibility & Keyboard Controls**: Full keyboard navigation, digit-first or cell-first input modes, screen-reader friendly labels.
+
+## Games Catalog (24 Games)
+
+- [Sudoku](https://logicholic.com/sudoku/): Classic 9×9 number placement puzzle featuring 11 difficulty levels (from Beginner to Beyond Hell), smart pencilmarks, and a 43-technique logical hint engine.
+- [2048](https://logicholic.com/game2048/): Number merge sliding tile puzzle with 3×3, 4×4, 5×5 boards, custom target goals (2048, 4096, 8192), and unlimited undo.
+- [Minesweeper](https://logicholic.com/minesweeper/): Classic mine deduction puzzle with guaranteed pure-logic solvable boards, three standard difficulties, and custom grid sizes.
+- [Nonogram (Picross)](https://logicholic.com/nonogram/): Picture logic grid puzzles revealing pixel art by deducing runs of filled cells from row and column numbers.
+- [Kakuro](https://logicholic.com/kakuro/): Number cross-sums puzzle combining crossword geometry with non-repeating digit combinations.
+- [Futoshiki](https://logicholic.com/futoshiki/): Latin square number placement puzzle constrained by greater-than and less-than inequality signs.
+- [Slitherlink](https://logicholic.com/slitherlink/): Loop-drawing puzzle where players draw a single continuous closed loop following numerical edge clues.
+- [Bridges (Hashiwokakero)](https://logicholic.com/bridges/): Connect numbered islands with orthogonal single or double bridges into a single connected network.
+- [Light Up (Akari)](https://logicholic.com/lightup/): Place light bulbs to illuminate every corridor cell without any two bulbs shining on each other.
+- [Klotski](https://logicholic.com/klotski/): Traditional sliding block puzzle featuring classic layouts (Huarong Trail / Cao Cao Escape) and an optimal BFS solver.
+- [Einstein Riddle](https://logicholic.com/einstein/): Five-house deductive logic grid puzzle solving complex relational constraints through step-by-step elimination.
+- [Sokoban](https://logicholic.com/sokoban/): Classic warehouse crate-pushing puzzle with 100+ curated levels and full undo/redo.
+- [Nim](https://logicholic.com/nim/): Ancient mathematical strategy game where players remove objects from heaps; includes an unbeatable AI using the binary XOR Nim-sum theorem.
+- [Gomoku (Caro)](https://logicholic.com/caro/): Classic five-in-a-row board game on a 15×15 grid featuring an intelligent Minimax AI opponent.
+- [Mastermind](https://logicholic.com/mastermind/): Code-breaking game where players deduce a secret multi-color combination using hit-and-blow feedback.
+- [Maze](https://logicholic.com/maze/): Procedurally generated mazes with animated BFS and DFS pathfinding solution visualization.
+- [Pipes](https://logicholic.com/pipes/): Plumbing connection puzzle where players rotate pipe segments to form a closed, leak-free network.
+- [Pentomino](https://logicholic.com/pentomino/): Polyomino geometry puzzle fitting 12 unique five-square shapes into target silhouettes.
+- [Tangram](https://logicholic.com/tangram/): Ancient Chinese dissection puzzle forming silhouettes using seven geometric flat pieces (tans).
+- [Matchsticks](https://logicholic.com/matchsticks/): Brain teasers requiring moving or removing matchsticks to correct arithmetic equations and shapes.
+- [River Crossing](https://logicholic.com/river/): Classic transportation logic dilemmas including Wolf-Goat-Cabbage and Missionaries-and-Cannibals.
+- [Water Jugs](https://logicholic.com/waterjug/): Measure exact target volumes using two unmarked containers through Diophantine state transitions and BFS search.
+- [Pathfinding](https://logicholic.com/pathfinding/): Interactive educational visualization comparing Dijkstra, A*, BFS, and DFS graph search algorithms on obstacle grids.
+- [Shortest Path](https://logicholic.com/shortest/): Network routing puzzle finding minimum-cost paths across weighted graphs.
+
+## Educational Articles & Strategy Guides
+
+- [Step-by-Step Sudoku Solving Guide](https://logicholic.com/articles/how-to-solve-sudoku-step-by-step/): Comprehensive tutorial explaining beginner to advanced deduction patterns.
+- [2048 Corner Strategy Guide](https://logicholic.com/articles/2048-strategy-keep-your-board-open/): Master tactics on anchoring large tiles in corners and keeping the grid open.
+- [Minesweeper Deductive Strategy](https://logicholic.com/articles/minesweeper-deduce-safe-squares/): Pattern recognition guide covering 1-1, 1-2-1, and 1-2-2-1 corner configurations.
+- [About Logicholic](https://logicholic.com/about/): Platform mission, architectural philosophy, and open-web design standards.
+- [Terms of Use](https://logicholic.com/terms/): Terms, license, and privacy commitment.
+
+## Sudoku Solving Techniques Dictionary (43 Guides)
+
+Full technical guides with interactive practice boards are available at https://logicholic.com/techniques/:
+- **Basic Singles**: Naked Single, Hidden Single (Box & Line).
+- **Subsets & Locked Candidates**: Naked Pairs/Triples/Quads, Hidden Pairs/Triples/Quads, Pointing Pairs/Triples, Box-Line Reduction (Claiming).
+- **Fish Patterns**: X-Wing (2×2), Swordfish (3×3), Jellyfish (4×4), Finned/Sashimi Fish.
+- **Single-Digit & Conjugate Pairs**: Skyscraper, Two-String Kite, Turbot Crane, Empty Rectangle.
+- **Wings & Multivalue Patterns**: XY-Wing (Y-Wing), XYZ-Wing, W-Wing.
+- **Uniqueness & Rectangles**: Unique Rectangles (UR Types 1, 2, 4, 5).
+- **Chains & Graph Coloring**: Simple Coloring, X-Cycles (X-Chain), 3D Medusa, XY-Chain, Alternating Inference Chains (AIC), Almost Locked Sets (ALS-XZ), Forcing Chains.
+
+## Comprehensive LLM Reference File
+
+- [Full Content and Rules Reference (llms-full.txt)](https://logicholic.com/llms-full.txt): Complete in-depth rules for all 24 games, algorithm explanations, technique proofs, and full platform FAQ.

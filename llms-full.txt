@@ -1,0 +1,202 @@
+# Logicholic - Full Platform Documentation & Knowledge Base
+
+> Website: https://logicholic.com/
+> Description: Free, privacy-first web platform featuring 24 playable logic puzzles and brain games. 100% client-side, zero ads, zero tracking, no registration.
+
+---
+
+## 1. Executive Summary & Value Proposition
+
+Logicholic is an open, client-side web application dedicated to timeless logic games and mathematical puzzles. Designed for enthusiasts, learners, and educators, it provides a fast, distraction-free environment without advertisements, monetization paywalls, or account requirements.
+
+### Key Architectural Pillars:
+1. **Zero Distraction / Pure Gameplay**: No banner ads, video interludes, pop-ups, or login walls.
+2. **100% Client-Side Privacy**: All puzzle generators, solvers, and game states execute locally in standard modern JavaScript. No personal identifiable information (PII) or telemetry is collected.
+3. **Pedagogical AI Solver**: The platform's flagship Sudoku engine models human deductive reasoning through 43 distinct techniques, providing visual explanations with colored cells, candidate highlight badges, and SVG link arrows rather than brute-force backtracks.
+4. **Universal Accessibility**: Optimized for mobile touchscreens, tablets, desktop keyboards, and e-readers via four distinct display themes:
+   - **Dark Theme**: Deep OLED black/slate minimizing eye strain.
+   - **Light Theme**: Warm cream paper background with crisp amber accents.
+   - **Sepia Theme**: Vintage scholarly parchment tone with antique jade and forest green highlights.
+   - **E-Ink Theme**: True monochrome black/white mode engineered specifically for e-paper displays.
+
+---
+
+## 2. Complete Games Catalog & Rules (24 Games)
+
+### 2.1 Sudoku (https://logicholic.com/sudoku/)
+- **Objective**: Fill a 9×9 grid divided into nine 3×3 boxes so every row, column, and 3×3 box contains the digits 1 through 9 exactly once.
+- **Difficulty Levels (11 Tiers)**: Beginner, Very Easy, Easy, Moderately Easy, Moderate, Moderately Hard, Hard, Very Hard, Fiendish, Vicious, Beyond Hell.
+- **Features**:
+  - Auto-candidate notes toggle, corner pencilmarks (pos 1-9), center pencilmarks.
+  - Interactive hint engine with 43 human techniques: highlights primary/secondary cells, target candidate badges, and draws strong/weak link arrows.
+  - Multi-cell dragging/selection, digit-first or cell-first input modes, error conflict check, and undo/redo history.
+
+### 2.2 2048 (https://logicholic.com/game2048/)
+- **Objective**: Slide numbered tiles on a grid. When two tiles with the same number collide, they merge into their sum. Goal is to create a tile with the value 2048 (or higher).
+- **Variations**: 3×3 (hardcore), 4×4 (classic), 5×5 (extended). Targets include 2048, 4096, and 8192 with unlimited undo.
+- **Key Strategy**: Anchor the highest-value tile in one chosen corner (e.g. bottom-right) and maintain a strictly descending snake order across adjacent rows. Never swipe away from the anchored corner.
+
+### 2.3 Minesweeper (https://logicholic.com/minesweeper/)
+- **Objective**: Uncover all safe squares on a grid without detonating any hidden landmines.
+- **Rules**: Numerical clues reveal how many mines are located in the 8 adjacent neighboring squares.
+- **Modes**: Beginner (9×9, 10 mines), Intermediate (16×16, 40 mines), Expert (30×16, 99 mines), and custom grids. Guaranteed pure-logic solvable (no guessing required on first move).
+
+### 2.4 Nonogram / Picross (https://logicholic.com/nonogram/)
+- **Objective**: Reveal a pixel-art silhouette by filling or crossing out grid cells according to numerical clues beside each row and column.
+- **Rules**: Clue numbers indicate lengths of consecutive filled blocks in that line. Multiple numbers require at least one blank square between consecutive blocks.
+
+### 2.5 Kakuro (https://logicholic.com/kakuro/)
+- **Objective**: Fill empty run cells with digits 1 through 9 so each contiguous horizontal or vertical run sums up to the clue number stated in the triangle header.
+- **Constraint**: No digit may repeat within the same continuous sum run.
+
+### 2.6 Futoshiki (https://logicholic.com/futoshiki/)
+- **Objective**: Fill an N×N Latin square grid with digits 1 through N such that no digit repeats in any row or column.
+- **Constraint**: Must strictly satisfy all inequality signs (< and >) placed between adjacent cells.
+
+### 2.7 Slitherlink (https://logicholic.com/slitherlink/)
+- **Objective**: Connect horizontal and vertical grid dots to form a single continuous closed loop with no branches, dead ends, or self-intersections.
+- **Rules**: Numbers inside cells (0, 1, 2, 3) indicate exactly how many of its four perimeter edges form part of the loop.
+
+### 2.8 Bridges / Hashiwokakero (https://logicholic.com/bridges/)
+- **Objective**: Connect numbered islands with straight orthogonal bridges so all islands form a single interconnected network.
+- **Rules**:
+  - The number on each island indicates how many bridges touch it.
+  - At most two bridges can connect any pair of islands.
+  - Bridges cannot cross other bridges or pass through islands.
+
+### 2.9 Light Up / Akari (https://logicholic.com/lightup/)
+- **Objective**: Place light bulbs in grid cells to illuminate all white squares.
+- **Rules**:
+  - Bulbs shine horizontally and vertically across rows and columns until blocked by black barrier walls.
+  - No two bulbs may shine on each other.
+  - Numbered black walls indicate exactly how many bulbs must touch their four orthogonal edges.
+
+### 2.10 Klotski / Sliding Block (https://logicholic.com/klotski/)
+- **Objective**: Slide wooden blocks within a frame to manoeuvre the large 2×2 block (Cao Cao / Red Square) to the bottom exit opening.
+- **Features**: Includes classic layouts (Huarong Trail, Hengdao Leap) and an optimal Breadth-First Search (BFS) shortest-path step solver.
+
+### 2.11 Einstein Riddle / Zebra Puzzle (https://logicholic.com/einstein/)
+- **Objective**: Determine the exact attributes (nationality, pet, beverage, color, cigar/hobby) of residents living in five adjacent houses.
+- **Methodology**: Apply relational deduction ("The Englishman lives in the red house", "The green house is immediately to the left of the white house") on a constraint elimination grid.
+
+### 2.12 Sokoban (https://logicholic.com/sokoban/)
+- **Objective**: Control a warehouse keeper to push cargo crates onto designated target storage spots.
+- **Constraints**: Crates can only be pushed forward, never pulled. Only one crate can be pushed at a time. Crates pushed against flat walls or corners can become permanently deadlocked.
+
+### 2.13 Nim (https://logicholic.com/nim/)
+- **Objective**: Two players take turns removing any positive number of objects from a single heap.
+- **Game Theory**: In normal play, the player who takes the last object wins. The optimal strategy relies on the Nim-Sum: the bitwise XOR sum of heap sizes. An unbeatable computer AI demonstrates the mathematical proof.
+
+### 2.14 Gomoku / Caro (https://logicholic.com/caro/)
+- **Objective**: Traditional strategy board game played on a 15×15 intersection grid. Two players take turns placing black (X) and white (O) stones.
+- **Win Condition**: The first player to form an unbroken horizontal, vertical, or diagonal line of exactly five stones wins.
+
+### 2.15 Mastermind (https://logicholic.com/mastermind/)
+- **Objective**: Break a secret 4-peg color code within 10 turns.
+- **Feedback**: After each guess, feedback pegs indicate exact matches (correct color and position) and partial matches (correct color, wrong position).
+
+### 2.16 Maze Puzzles (https://logicholic.com/maze/)
+- **Objective**: Navigate from an entrance to an exit in procedurally generated labyrinth grids with algorithm pathfinding demonstrations (BFS, DFS).
+
+### 2.17 Pipes / Connect (https://logicholic.com/pipes/)
+- **Objective**: Click or tap to rotate plumbing sections to establish an unbroken closed water network with no open, leaking pipe ends.
+
+### 2.18 Pentomino Tiling (https://logicholic.com/pentomino/)
+- **Objective**: Fit 12 unique polyomino shapes (each composed of five congruent squares) into rectangular or custom target silhouettes without gaps or overlaps.
+
+### 2.19 Tangram (https://logicholic.com/tangram/)
+- **Objective**: Dissection puzzle using seven geometric pieces (five triangles, one square, one parallelogram) to replicate designated target silhouettes.
+
+### 2.20 Matchsticks (https://logicholic.com/matchsticks/)
+- **Objective**: Move or remove a specified number of matchsticks to transform incorrect arithmetic equations into valid mathematical equalities, or form geometric shapes.
+
+### 2.21 River Crossing (https://logicholic.com/river/)
+- **Objective**: Transport characters across a river using a boat with limited capacity under strict hazard constraints (e.g. Wolf cannot be left alone with Goat; Goat cannot be left alone with Cabbage).
+
+### 2.22 Water Jugs (https://logicholic.com/waterjug/)
+- **Objective**: Measure an exact volume of water using two unmarked jugs of given capacities A and B by repeated filling, emptying, and transferring operations.
+- **Mathematics**: Solvable if and only if target volume is a multiple of greatest common divisor gcd(A, B) and does not exceed the larger jug capacity.
+
+### 2.23 Pathfinding Visualization (https://logicholic.com/pathfinding/)
+- **Objective**: Interactive simulation comparing search algorithms (Dijkstra, A*, Breadth-First Search, Depth-First Search) navigating user-drawn obstacle mazes.
+
+### 2.24 Shortest Path (https://logicholic.com/shortest/)
+- **Objective**: Determine the optimal, minimum-cost route traversing connected node networks.
+
+---
+
+## 3. Sudoku Solving Techniques Reference (43 Techniques)
+
+Logicholic implements the world's most comprehensive educational Sudoku solving suite, categorized into 10 progressive tiers:
+
+### Tier 1: Basic Singles
+1. **Naked Single**: A cell has only one remaining candidate digit because all other digits (1-9) already appear in its row, column, or 3×3 box.
+2. **Hidden Single (Box)**: A digit can only fit in one specific cell within a 3×3 box, even if that cell contains other candidate pencilmarks.
+3. **Hidden Single (Line)**: A digit can only fit in one specific cell within a row or column.
+
+### Tier 2: Subsets & Locked Candidates
+4. **Naked Pair**: Two cells in the same unit contain the exact same two candidate digits {A, B}. Those digits are eliminated from all other cells in that unit.
+5. **Hidden Pair**: Two digits appear in only two cells within a unit. All other candidates in those two cells are eliminated.
+6. **Naked Triple**: Three cells in a unit collectively contain only three candidate digits {A, B, C}. Those digits are eliminated from the rest of the unit.
+7. **Hidden Triple**: Three digits appear in only three cells in a unit. All other candidates in those cells are eliminated.
+8. **Naked Quad**: Four cells in a unit collectively contain only four candidates {A, B, C, D}.
+9. **Hidden Quad**: Four digits restricted to four cells in a unit eliminate all other candidates in those cells.
+10. **Locked Candidates (Pointing)**: When all candidates for digit D in a box lie on a single row/column, digit D is eliminated from the rest of that row/column outside the box.
+11. **Locked Candidates (Claiming / Box-Line Reduction)**: When all candidates for digit D in a row/column lie inside a single box, digit D is eliminated from all other cells in that box.
+
+### Tier 3: Fish Patterns
+12. **X-Wing (Size 2)**: Digit D appears in exactly two columns across two rows. The intersection forms a rectangle, eliminating D from all other cells in those two columns.
+13. **Swordfish (Size 3)**: Digit D is confined to at most three columns across three rows, eliminating D from all other cells in those three columns.
+14. **Jellyfish (Size 4)**: Digit D is confined to at most four columns across four rows, eliminating D from other cells in those columns.
+15. **Finned X-Wing**: An X-Wing with 1-2 extra candidates (fins) in one box. Eliminates digit D from cells seeing both the fish pattern and the fin.
+16. **Finned Swordfish**: Swordfish pattern with fin candidates in a single box.
+17. **Finned Jellyfish**: Jellyfish pattern with fin candidates in a single box.
+
+### Tier 4: Single-Digit Techniques
+18. **Skyscraper**: Two strong links for digit D in parallel rows/columns share an aligned base. Digit D is eliminated from any cell seeing both unaligned roof endpoints.
+19. **Two-String Kite**: A row strong link and a column strong link meet inside a single box. Eliminates digit D from the intersection cell seeing both outer dragon endpoints.
+20. **Turbot Crane / Turbot Fish**: A 5-link single-digit chain with three strong links and two weak links forcing an elimination.
+21. **Empty Rectangle (ER)**: A cross pattern in a box combined with an external strong link eliminates digit D at the opposite corner.
+
+### Tier 5: Wings & Multivalue Patterns
+22. **XY-Wing (Y-Wing)**: A bivalue pivot cell {A, B} sees wing 1 {A, C} and wing 2 {B, C}. Regardless of whether pivot is A or B, one wing must be C. Eliminates C from cells seeing both wings.
+23. **XYZ-Wing**: A trivalue pivot {A, B, C} shares a box with wing 1 {A, C} and sees wing 2 {B, C}. Eliminates C from cells seeing all three cells.
+24. **W-Wing**: Two identical bivalue cells {A, B} connected by an external strong link on digit A. Eliminates digit B from cells seeing both bivalue cells.
+
+### Tier 6: Uniqueness Patterns
+25. **Unique Rectangle Type 1**: In a 4-cell rectangle across two boxes with {A, B}, if three cells contain only {A, B}, the fourth cell cannot be A or B to avoid a non-unique deadly pattern.
+26. **Unique Rectangle Type 2**: Two cells on one side contain an extra candidate C. Candidate C is eliminated from cells seeing both extra cells.
+27. **Unique Rectangle Type 4**: A strong link on digit A across the roof cells eliminates digit B from both roof cells.
+28. **Unique Rectangle Type 5**: Diagonal corners containing extra candidates.
+
+### Tier 7: Graph Coloring & Alternating Chains
+29. **Simple Coloring**: Bicolor candidate D nodes using alternating colors along conjugate pairs (strong links). A cell seeing both colors cannot contain D; two nodes of the same color seeing each other proves that color false.
+30. **X-Chain / X-Cycles**: Alternating strong and weak links on a single digit.
+31. **3D Medusa**: Multi-digit coloring over strong links within cells (bivalue) and within units (conjugate pairs).
+32. **XY-Chain**: Chain of bivalue cells where each adjacent link shares a candidate.
+33. **Alternating Inference Chains (AIC)**: Generalized chain alternating between strong inferences and weak inferences across different cells and digits.
+34. **Almost Locked Sets (ALS-XZ)**: Two almost-locked sets linked by a restricted common candidate X eliminate a second common candidate Z from cells seeing all Zs in both sets.
+35. **Dual Forcing Chains & Nishio**: Contradiction-based inference testing candidate branches to find universal deductions.
+36. **Bowman's Bingo / Dynamic Forcing**: Advanced branch tracking for extreme Beyond Hell puzzles.
+
+---
+
+## 4. Platform Frequently Asked Questions (FAQ)
+
+### Q: Is Logicholic free?
+**A**: Yes, Logicholic is 100% free with no paywalls, subscriptions, in-app purchases, or advertisement banners.
+
+### Q: Does Logicholic require creating an account?
+**A**: No. Anyone can visit the site and play immediately without signing in or providing an email address.
+
+### Q: Can Logicholic be played offline?
+**A**: Yes. Logicholic is a Progressive Web App (PWA). Modern browsers cache the game assets, allowing full offline play without an internet connection.
+
+### Q: Does Logicholic track user data?
+**A**: No. The site collects zero personal information. All puzzle generations, validations, and solving steps run entirely inside the client browser.
+
+### Q: How does the Sudoku hint engine work?
+**A**: Unlike basic solvers that simply reveal numbers from the answer key, Logicholic's hint engine computes actual human logical deductions step-by-step. It searches through 43 human techniques from simplest (Naked Single) to advanced (Wings, Fish, Chains), highlights the relevant cells on the board, and draws graphical inference arrows explaining why candidates are placed or eliminated.
+
+### Q: What input methods are supported for Sudoku?
+**A**: Both Digit-First (select digit, then click cells) and Cell-First (select cell, then press 1-9) modes are supported, along with Corner Notes, Center Notes, Auto-Candidate Pencilmarks, cell coloring, circle marks, and arrow links.
